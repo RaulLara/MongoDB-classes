@@ -1,0 +1,23 @@
+For queries: 
+
+db.*name of collection*.find({"*key*":VALUE})
+
+to print pretty, add .pretty() to end of it. 
+
+to only print one key value pair (projections) 
+.find({*key*:VALUE} ,{*Key to be included*:1})
+
+Similarily to exclude a key value pair (projections)
+.find({*key*:VALUE},{*Key to be excluded*:0})
+
+to show the databases currently on your server:
+show dbs
+
+to show collections:
+show collections
+
+to use a database:
+use *name of database*
+
+to see how many documents hold a certain query:
+*find query here*.count()

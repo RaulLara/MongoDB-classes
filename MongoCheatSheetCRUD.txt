@@ -1,0 +1,105 @@
+********************For queries************************************** 
+
+db.*name of collection*.find({"*key*":VALUE})
+
+to print pretty, add .pretty() to end of it. 
+
+to only print one key value pair (projections) 
+.find({*key*:VALUE} ,{*Key to be included*:1})
+
+Similarily to exclude a key value pair (projections)
+.find({*key*:VALUE},{*Key to be excluded*:0})
+
+to show the databases currently on your server:
+show dbs
+
+to show collections:
+show collections
+
+to use a database:
+use *name of database*
+
+to see how many documents hold a certain query:
+*find query here*.count()
+
+******************************For Updates/Inserts******************************
+To insert a document into a collection: 
+db.*Collection*.insertOne({*KEY*:*VALUE*, *ARRAY*:{*KEY1*:*VALUE1*,*KEY2*:*VALUE2*})
+
+To insert multiple documents into a collection: 
+db.*Collection*.insertMany([ {*FIRST DOCUMENT INFORMATION*}, {*SECOND DOCUMENT INFORMATION*}])
+
+To update one field of one document : 
+db.*collection*.updateOne({*KEY VALUE PAIR TO MATCH DOCUMENT*}, {$set: {*KEY VALUE PAIRS TO BE INSERTED/UPDATED*}})
+
+To remove a field of one document:
+db.*collection*.updateOne({*KEY VALUE PAIR TO MATCH DOCUMENT*}, {$unset: {*KEYS*}})
+
+To make a modification to all documents that match a filter: 
+db.*Collection*.updateMany({*QUERY*}, {*update operator* : {*FIELDS TO BE UPDATED*}})
+
+
+To update a document or insert the document if one has not been created use upsert:
+db.*Collection*.updateOne({*QUERY*} ,{*UPDATE*}, {upsert: true})
+
+
+*********************************Delete***********************************************************
+
+To delete the first document that matches a query: 
+db.*Collection*.deleteOne(*QUERY/Filter*)
+
+To delete all the files that match a query: 
+db.*Collection*.deleteMany(*QUERY/Filter*)
+
+
+
+
+**************************************************************************************************
+
+
+*******************************************Query Operators****************************************
+
+For filtering a query to include the logical operator greater than a specificed value in a key value pair: 
+db.*collection*.find({*Key*:{$gt: *value*}})
+
+For filtering a query to include a less than operator:
+db.*collection*.find({*key*:{$lt: *value*}})
+
+For greater than or equal to, or less than or eequal to:
+$gte, $lte
+
+For trying to find a value that is equal to the value in a field: 
+$eq
+
+For returning a query that does not include a certain key value pair (to include those that don't have the field at all):
+db.*collection*.find({*Key*: {$ne: *value*}})
+
+To specify more than one value in a key value pair that you want to return:
+db.*collection*.find({*key*: {$in: [*values in an array*]}})
+
+To not include a value: 
+$nin
+
+To search for a document for if it includes a field:
+db.*collection*.find({*Key*:{$exists: true}})
+
+To search for the absence of a field:
+db.*collection*.find({*key*:{$exists: false}})
+
+If you want a query to match two or more clauses:
+db.*collection*.find({$and: [*key value pairs*]})
+
+If you want it to match either clauses:
+db.*collection*.find({$or: [*key value pairs*]})
+
+
+*****************************************************************************************************
+*****************************************************************************************************
+The Cursur is set up to output 20 results, to resume the next 20 results in those that are longer than 20:
+it
+
+Flexibility is in being able to add documents that have different fields and may not have the same type of fields. No need to create mutliple table or to add NULL values in columns where it may be rare to have that column filled.
+
+Update operators are used to specify how one or more fields should be modified in matchign documents.  
+
+Coming from databases that have fields with null value, looking for a value of null includes those that do not have a field AND those that have the field but also the value null. 
