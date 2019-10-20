@@ -1,0 +1,53 @@
+Useful Shell Helpers: 
+
+Basic Helper Groups
+
+db.*method* <- interacts with the database
+	db.*collection*.*method* <- to interact with specific collections
+
+rs.*method* <- controls replica sets
+
+sh.*method* <- sharded cluster deployment management
+
+
+----------------Data Base Commands----------
+
+- Database Commands are used to interact with MongoDB
+- db.runCommand() is to run a command within the shell, not the driver. 
+- The commands purpose is to simplify interaction within the shell. 
+===============User Management==============
+
+db.createUser() <- Creates users, defines roles, etc.
+db.dropUser() <- drop a current user at teh database level
+ 
+===============Collection Management========
+
+db.renameCollection() <- rename a collection
+db.*collection*.createIndex() <- create index
+db.*collection*.drop() droping a collection
+
+===============Database Management=========
+
+db.dropDatabase() <- drops a database 
+db.createCollection() <- creates a colleciton 
+
+===============Database Status=============
+
+db.serverStatus() <- returns statistics on the database
+
+===============Database Commands===========
+
+db.runCommand( { *command*} ) <- runs using the active database
+
+===============Database Indexing===========
+
+db.runCommand(
+  { "createIndexes": *collection* },
+  { "indexes": [
+    {
+      "*key*": { "*value*" }
+    },
+    { "*name*": "*nameIndex*" }
+    ]
+  }
+)
