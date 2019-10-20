@@ -51,3 +51,12 @@ db.runCommand(
     ]
   }
 )
+
+ONE CAN USE A SHELL HELPER TO MAKE IT EASIER TO RUN THE COMMAND
+THE FOLLOWING DOES THE SAME AS THE PREVIOUS COMMAND BUT IS SIMPLER
+TO USE: 
+
+db.*collection*.createIndex(
+  { "*KEY*": *VALUE* },
+  { "*name*": "*name_index*" }
+)
